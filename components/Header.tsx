@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import NavItems from "@/components/NavItems";
 import UserDropdown from "@/components/UserDropdown";
+import { spaceGrotesk } from "@/lib/fonts";
 
 const Header = () => {
     return (
@@ -16,9 +17,10 @@ const Header = () => {
                         height={32}
                         className="h-8 w-auto cursor-pointer"
                     />
-                    <span className="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
-    NVEST
-  </span>
+                    <span
+                        className={`${spaceGrotesk.className} text-lg font-bold tracking-[0.2em] text-slate-100 drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]`}>
+                    NVest
+                    </span>
                 </Link>
 
                 {/* Center Nav */}
