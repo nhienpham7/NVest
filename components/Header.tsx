@@ -4,7 +4,7 @@ import NavItems from "@/components/NavItems";
 import UserDropdown from "@/components/UserDropdown";
 import { spaceGrotesk } from "@/lib/fonts";
 
-const Header = () => {
+const Header = async ({ user }: { user: User }) => {
     return (
         <header className="sticky top-0 z-40 border-b border-neutral-800 bg-background">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -29,7 +29,7 @@ const Header = () => {
                 </nav>
 
                 {/* Right Dropdown */}
-                <UserDropdown />
+                <UserDropdown user={user}  />
             </div>
         </header>
     );

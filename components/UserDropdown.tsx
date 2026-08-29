@@ -14,32 +14,36 @@ import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
 import NavItems from "@/components/NavItems";
+import {Button} from "@/components/ui/button";
+import {signOut} from "@/lib/actions/auth.actions";
 
-const UserDropdown = () => {
+const UserDropdown = ({user}: {user: User}) => {
     const router = useRouter();
 
     const handleSignOut = async () => {
-        router.push('/login');
+        await signOut();
+        router.push('/sign-in');
     };
 
-    const user = { name: 'Nature', email: 'nature@nature.com' };
 
     return (
         <DropdownMenu>
             {/* 1. Directly use DropdownMenuTrigger as the interactive wrapper */}
             <DropdownMenuTrigger className = "inline-flex items-center gap-3 rounded-full p-1 transition-colors hover:bg-neutral-800/50 outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                <Avatar className = "h-8 w-8">
-                    <AvatarImage src = "/avatar.png" alt="User avatar" />
-                    <AvatarFallback className = "bg-blue-300 text-xs font-semibold text-yellow-800">
-                        {user.name ? user.name[0] : 'U'}
-                    </AvatarFallback>
-                </Avatar>
+                <Button variant="ghost" className="flex items-center gap-3 text-gray-4 hover:text-yellow-500">
+                    <Avatar className = "h-8 w-8">
+                        <AvatarImage src = "/avatar.png" alt="User avatar" />
+                        <AvatarFallback className = "bg-blue-300 text-xs font-semibold text-yellow-800">
+                            {user.name ? user.name[0] : 'U'}
+                        </AvatarFallback>
+                    </Avatar>
 
-                <div className = "hidden md:flex flex-col items-start pr-2">
-          <span className = "text-sm font-medium text-gray-300">
-            {user.name}
-          </span>
-                </div>
+                    <div className = "hidden md:flex flex-col items-start pr-2">
+                        <span className = "text-sm font-medium text-gray-300">
+                            {user.name}
+                        </span>
+                    </div>
+                </Button>
             </DropdownMenuTrigger>
 
             {/*Menu popup options*/}
@@ -54,9 +58,9 @@ const UserDropdown = () => {
                                 </AvatarFallback>
                             </Avatar>
                             <div className = "flex flex-col overflow-hidden text-left">
-                <span className = "text-sm font-semibold text-gray-100 truncate">
-                  {user.name}
-                </span>
+                                <span className = "text-sm font-semibold text-gray-100 truncate">
+                                    {user.name}
+                                </span>
                                 <span className = "text-xs text-gray-400 truncate">{user.email}</span>
                             </div>
                         </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { inter, geistSans, geistMono, spaceGrotesk } from "@/lib/fonts";
+import { Toaster } from "@/components/ui/sonner"
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NVest",
@@ -23,7 +25,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               inter.variable
           )}
       >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+            {children}
+            <Toaster />
+      </body>
       </html>
   );
 }
