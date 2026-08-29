@@ -3,8 +3,13 @@ import Image from "next/image";
 import NavItems from "@/components/NavItems";
 import UserDropdown from "@/components/UserDropdown";
 import { spaceGrotesk } from "@/lib/fonts";
+import {searchStocks} from "@/lib/actions/finnhub.actions";
+
 
 const Header = async ({ user }: { user: User }) => {
+    const initialStocks = await searchStocks();
+
+
     return (
         <header className="sticky top-0 z-40 border-b border-neutral-800 bg-background">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -25,11 +30,11 @@ const Header = async ({ user }: { user: User }) => {
 
                 {/* Center Nav */}
                 <nav className="hidden sm:block">
-                    <NavItems />
+                    <NavItems initialStocks={initialStocks}/>
                 </nav>
 
                 {/* Right Dropdown */}
-                <UserDropdown user={user}  />
+                <UserDropdown user={user} initialStocks={initialStocks}/>
             </div>
         </header>
     );
