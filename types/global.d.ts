@@ -16,10 +16,10 @@ declare global {
         preferredIndustry: string;
     };
 
-    type CountrySelectProps = {
+    type CountrySelectProps<T = Record<string, unknown>> = {
         name: string;
         label: string;
-        control: Control;
+        control: Control<T>;
         error?: FieldError;
         required?: boolean;
     };
@@ -39,16 +39,6 @@ declare global {
     type Option = {
         value: string;
         label: string;
-    };
-
-    type SelectFieldProps = {
-        name: string;
-        label: string;
-        placeholder: string;
-        options: readonly Option[];
-        control: Control<FieldValues>;
-        error?: FieldError;
-        required?: boolean;
     };
 
     type FooterLinkProps = {
